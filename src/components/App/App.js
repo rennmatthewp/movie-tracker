@@ -13,7 +13,7 @@ class App extends Component {
   async componentDidMount() {
     try {
       const moviesArray = await apiFetch();
-      this.props.handleFetch(moviesArray)
+      this.props.handleFetch(moviesArray);
     } catch (error) {
       console.log('error:', error);
     }
@@ -22,17 +22,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path='/' component={CardContainer} />
+        <Route exact path="/" component={CardContainer} />
       </div>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({ movies: state.movies })
-const mapDispatchToProps = (dispatch) => ({
-  handleFetch: (moviesArray) => dispatch(fetchMovies(moviesArray))
-})
-
-
+const mapStateToProps = state => ({ movies: state.movies });
+const mapDispatchToProps = dispatch => ({
+  handleFetch: moviesArray => dispatch(fetchMovies(moviesArray))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
