@@ -28,6 +28,7 @@ class App extends Component {
       
       return (
         <div key={`movie-${i}`}>
+          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
           <h1>{movie.title}</h1>
         </div>
       )
