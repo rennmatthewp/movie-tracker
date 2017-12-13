@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { apiFetch } from '../../helper/apiHelper';
-import { connect } from 'react-redux';
 import { fetchMovies } from '../../actions';
+import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
+import CardContainer from '../CardContainer/CardContainer';
 
 class App extends Component {
   constructor() {
@@ -17,20 +19,12 @@ class App extends Component {
     }
   }
 
-  mappedMovies = () => {
-    console.log(this.props.movies);
-    return this.props.movies.map( (movie, index) => { 
-      return (
-        <div key={`movie-${index}`}>
-          <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
-          <h1>{movie.title}</h1>
-        </div>
-      );
-  });
-  };
-
   render() {
-    return <div className="App">{this.mappedMovies()}</div>;
+    return (
+      <div className="App">
+        <Route exact path='/' component={CardContainer} />
+      </div>
+    )
   }
 }
 
