@@ -1,37 +1,31 @@
 import React, { Component } from 'react';
-import { apiKey } from '../../helper/.apiKey';
+import { apiFetch } from '../../helper/apiHelper';
+import { connect } from 'react-redux';
+import { fetchMovies } from '../../actions';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      movieArray: []
-    };
   }
 
   async componentDidMount() {
     try {
-      const initialFetch = await fetch(
-        `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`
-      );
-      const parsedData = await initialFetch.json();
-      const movieArray = parsedData.results;
-      this.setState({ movieArray });
+      const moviesArray = await apiFetch();
+      this.props.handleFetch(moviesArray)
     } catch (error) {
       console.log('error:', error);
     }
   }
 
   mappedMovies = () => {
-    return this.state.movieArray.map( (movie, i) => {
-      console.log('movie:', movie);
-      
+    console.log(this.props.movies);
+    return this.props.movies.map( (movie, index) => { 
       return (
-        <div key={`movie-${i}`}>
+        <div key={`movie-${index}`}>
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
           <h1>{movie.title}</h1>
         </div>
-      )
+      );
   });
   };
 
@@ -40,4 +34,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({ movies: state.movies })
+const mapDispatchToProps = (dispatch) => ({
+  handleFetch: (moviesArray) => dispatch(fetchMovies(moviesArray))
+})
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
