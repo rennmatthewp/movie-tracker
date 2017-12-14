@@ -13,7 +13,6 @@ export const apiFetch = async () => {
   }
 };
 
-
 export const postNewAccount = async (userObj) => {
   const newUserPost = await fetch('/api/users/new', {
     method: 'POST',
@@ -22,12 +21,32 @@ export const postNewAccount = async (userObj) => {
     },
     body: JSON.stringify(userObj)
   });
-  console.log(newUserPost)
+
   if(newUserPost.status > 400) {
     console.log('bad status')
   }
-  const parsedResponse = await newUserPost.json();
-  console.log(parsedResponse)
-  return parsedResponse;
+  return await newUserPost.json();
 }
-  
+
+export const postUserSignIn = async (userObj) => {
+  const userSignIn = await fetch('/api/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userObj)
+  });
+
+  if(userSignIn.status > 400) {
+    console.log('bad status')
+  }
+
+  return await userSignIn.json();
+}
+
+
+
+
+
+
+
