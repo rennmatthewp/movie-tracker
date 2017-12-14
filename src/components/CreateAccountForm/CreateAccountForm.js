@@ -14,7 +14,6 @@ class CreateAccountForm extends Component{
 
   render() {
     return (
-      
       <form className='create-acct-form'>
         <input 
           type='text'

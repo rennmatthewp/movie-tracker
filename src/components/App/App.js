@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { apiFetch } from '../../helper/apiHelper';
 import { fetchMovies } from '../../actions';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import CardContainer from '../CardContainer/CardContainer';
 import CreateAccountForm from '../CreateAccountForm/CreateAccountForm';
 import Header from '../Header/Header';
@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route path="/signup" component={CreateAccountForm} />
+        <Route path="/createaccount" component={CreateAccountForm} />
         <Route exact path="/" component={CardContainer} />
       </div>
     );
@@ -37,4 +37,4 @@ const mapDispatchToProps = dispatch => ({
   handleFetch: moviesArray => dispatch(fetchMovies(moviesArray))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
