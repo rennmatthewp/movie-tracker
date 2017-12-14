@@ -8,7 +8,7 @@ class CreateAccountForm extends Component{
   constructor() {
     super();
     this.state= {
-      username: '',
+      name: '',
       email: '',
       password: ''
     };
@@ -20,7 +20,7 @@ class CreateAccountForm extends Component{
         <input 
           type='text'
           className='user-name'
-          onChange={(event)=> this.setState({username: event.target.value})}
+          onChange={(event)=> this.setState({name: event.target.value})}
         />
         <input
           type='text' 
@@ -32,7 +32,10 @@ class CreateAccountForm extends Component{
           className='user-password' 
           onChange={(event)=> this.setState({password: event.target.value})}
         />
-        <button onClick={()=> postNewAccount(this.state)}>
+        <button onClick={(e)=> {
+          e.preventDefault();
+          console.log(this.state);
+          postNewAccount(this.state)}}>
           Create Account
         </button>
       </form>

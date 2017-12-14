@@ -2,7 +2,7 @@
   "name": "movie-tracker-fe",
   "version": "0.1.0",
   "private": true,
-  "proxy": "local: 3000",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
