@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { apiFetch } from '../../helper/apiHelper';
+// import { apiFetch } from '../../helper/apiHelper';
 import { storeMovies } from '../../actions';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';

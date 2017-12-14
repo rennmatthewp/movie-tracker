@@ -1,8 +1,8 @@
-import React, { Compenent, Component } from 'react';
+import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
-import { createAccount } from '../../actions';
-import { postNewAccount } from '../../helper/apiHelper';
+// import { Route } from 'react-router-dom';
+import { createNewUser } from '../../actions';
+// import { postNewAccount } from '../../helper/apiHelper';
 
 class CreateAccountForm extends Component{
   constructor() {
@@ -32,10 +32,8 @@ class CreateAccountForm extends Component{
           className='user-password' 
           onChange={(event)=> this.setState({password: event.target.value})}
         />
-        <button onClick={(e)=> {
-          e.preventDefault();
-          console.log(this.state);
-          postNewAccount(this.state)}}>
+        <button onClick={()=> {
+          this.props.handleNewAccount(this.state)}}>
           Create Account
         </button>
       </form>
@@ -48,7 +46,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createNewUser: userObj => dispatch(createAccount(userObj))
+  handleNewAccount: userObj => dispatch(createNewUser(userObj))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateAccountForm);

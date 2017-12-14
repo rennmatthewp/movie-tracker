@@ -1,4 +1,4 @@
-import { apiFetch } from '../helper/apiHelper';
+import { apiFetch, postNewAccount } from '../helper/apiHelper';
 
 export const fetchMovies = (moviesArray) => ({
   type: 'FETCH_MOVIES',
@@ -20,4 +20,7 @@ export const createAccount = (userObj) => ({
   userObj
 });
 
-
+export const createNewUser = (userObj) => async (dispatch) => {
+  const userData = await postNewAccount(userObj);
+  dispatch(createAccount(userObj));
+}
