@@ -11,5 +11,5 @@ export const apiFetch = async () => {
   } catch (error) {
     console.log(error);
   }
-}
+};
   
