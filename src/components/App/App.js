@@ -4,7 +4,8 @@ import { fetchMovies } from '../../actions';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import CardContainer from '../CardContainer/CardContainer';
-import Form from '../Form/Form';
+import CreateAccountForm from '../CreateAccountForm/CreateAccountForm';
+import Header from '../Header/Header';
 
 class App extends Component {
   constructor() {
@@ -23,7 +24,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/" component={Form} />
+        <Header />
+        <Route path="/signup" component={CreateAccountForm} />
         <Route exact path="/" component={CardContainer} />
       </div>
     );
