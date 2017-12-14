@@ -11,5 +11,22 @@ export const apiFetch = async () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+
+export const postNewAccount = async (userObj) => {
+  try {
+    const newUserPost = await fetch('api/user/new', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userObj)
+  });
+  return newUserPost
+
+  } catch (error){
+    console.log(error);
+  }
 }
   
