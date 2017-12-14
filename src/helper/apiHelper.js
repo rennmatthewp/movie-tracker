@@ -22,7 +22,12 @@ export const postNewAccount = async (userObj) => {
     },
     body: JSON.stringify(userObj)
   });
+  console.log(newUserPost)
+  if(newUserPost.status > 400) {
+    console.log('bad status')
+  }
   const parsedResponse = await newUserPost.json();
-    console.log(parsedResponse)
+  console.log(parsedResponse)
+  return parsedResponse;
 }
   

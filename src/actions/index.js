@@ -22,5 +22,5 @@ export const createAccount = (userObj) => ({
 
 export const createNewUser = (userObj) => async (dispatch) => {
   const userData = await postNewAccount(userObj);
-  dispatch(createAccount(userObj));
+  dispatch(createAccount(userData));
 }
