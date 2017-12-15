@@ -10,4 +10,30 @@ describe('All actions', () => {
 
     expect(actions.fetchMovies(moviesArray)).toEqual(expected);
   });
+
+  it('has a type of CREATE_ACCOUNT', () => {
+    const userObj = { 
+      username: 'Julie',
+      email: 'jmdursema@gmail.com', 
+      password: 'guest' };
+    const expected = {
+      type: 'CREATE_ACCOUNT',
+      userObj
+    };
+
+    expect(actions.createAccount(userObj)).toEqual(expected);
+  });
+
+  it('has a type of LOGIN', () => {
+    const userObj = { 
+      username: 'Julie',
+      email: 'jmdursema@gmail.com', 
+      password: 'guest' };
+    const expected = {
+      type: 'LOGIN',
+      userObj
+    };
+
+    expect(actions.logIn(userObj)).toEqual(expected);
+  });
 });
