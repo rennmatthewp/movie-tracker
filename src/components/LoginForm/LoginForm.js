@@ -1,10 +1,8 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-// import { Route } from 'react-router-dom';
 import { loginUser } from '../../actions';
-// import { postNewAccount } from '../../helper/apiHelper';
 
-class CreateAccountForm extends Component{
+class Login extends Component{
   constructor() {
     super();
 
@@ -45,4 +43,4 @@ const mapDispatchToProps = dispatch => ({
   handleLogin: userObj => dispatch(loginUser(userObj))
 });
 
-export default connect(null, mapDispatchToProps)(CreateAccountForm);
+export default connect(null, mapDispatchToProps)(Login);

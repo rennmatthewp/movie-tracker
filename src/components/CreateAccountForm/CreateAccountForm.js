@@ -1,8 +1,6 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
-// import { Route } from 'react-router-dom';
 import { createNewUser } from '../../actions';
-// import { postNewAccount } from '../../helper/apiHelper';
 
 class CreateAccountForm extends Component{
   constructor() {
