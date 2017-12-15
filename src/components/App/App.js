@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { apiFetch } from '../../helper/apiHelper';
-import { fetchMovies } from '../../actions';
+// import { apiFetch } from '../../helper/apiHelper';
+import { storeMovies } from '../../actions';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 import CardContainer from '../CardContainer/CardContainer';
 import CreateAccountForm from '../CreateAccountForm/CreateAccountForm';
 import Header from '../Header/Header';
+import LoginForm from '../LoginForm/LoginForm';
 
 class App extends Component {
   constructor() {
@@ -14,8 +15,7 @@ class App extends Component {
 
   async componentDidMount() {
     try {
-      const moviesArray = await apiFetch();
-      this.props.handleFetch(moviesArray);
+      this.props.handleFetch();
     } catch (error) {
       console.log('error:', error);
     }
@@ -25,8 +25,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route path="/createaccount" component={CreateAccountForm} />
         <Route exact path="/" component={CardContainer} />
+        <Route path="/createaccount" component={CreateAccountForm} />
+        <Route path="/login" component={LoginForm} />
+
       </div>
     );
   }
@@ -34,7 +36,7 @@ class App extends Component {
 
 const mapStateToProps = state => ({ movies: state.movies });
 const mapDispatchToProps = dispatch => ({
-  handleFetch: moviesArray => dispatch(fetchMovies(moviesArray))
+  handleFetch: () => dispatch(storeMovies())
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
