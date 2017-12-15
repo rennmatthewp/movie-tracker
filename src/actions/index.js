@@ -43,3 +43,7 @@ export const loginUser = (userObj) => async (dispatch) => {
 }
 
 
+export const logOut = () => ({
+  type: 'LOGOUT'
+})
+

@@ -1,6 +1,8 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions';
+import { Link, browserHistory } from 'react-router-dom';
+
 
 class Login extends Component{
   constructor() {
@@ -27,7 +29,8 @@ class Login extends Component{
         />
         <button onClick={(e)=> {
           e.preventDefault();
-          this.props.handleLogin(this.state)}}>
+          this.props.handleLogin(this.state);
+          this.props.history.push('/')}}>
           LOGIN
         </button>
       </form>
