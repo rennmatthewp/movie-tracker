@@ -11,7 +11,7 @@ export const storeMovies = () => async (dispatch) => {
     const moviesArray = await helper.apiFetch(); 
     dispatch(fetchMovies(moviesArray));
   } catch(error) {
-    console.log(error)
+    console.log(error);
   }
 };
 
