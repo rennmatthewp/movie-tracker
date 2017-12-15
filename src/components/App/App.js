@@ -6,6 +6,7 @@ import { Route, withRouter } from 'react-router-dom';
 import CardContainer from '../CardContainer/CardContainer';
 import CreateAccountForm from '../CreateAccountForm/CreateAccountForm';
 import Header from '../Header/Header';
+import LoginForm from '../LoginForm/LoginForm';
 
 class App extends Component {
   constructor() {
@@ -24,8 +25,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Route path="/createaccount" component={CreateAccountForm} />
         <Route exact path="/" component={CardContainer} />
+        <Route path="/createaccount" component={CreateAccountForm} />
+        <Route path="/login" component={LoginForm} />
+
       </div>
     );
   }

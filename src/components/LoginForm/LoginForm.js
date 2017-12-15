@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
 // import { Route } from 'react-router-dom';
-import { createNewUser } from '../../actions';
+import { loginUser } from '../../actions';
 // import { postNewAccount } from '../../helper/apiHelper';
 
 class CreateAccountForm extends Component{
@@ -9,7 +9,6 @@ class CreateAccountForm extends Component{
     super();
 
     this.state= {
-      name: '',
       email: '',
       password: ''
     };
@@ -17,12 +16,7 @@ class CreateAccountForm extends Component{
 
   render() {
     return (
-      <form className='create-acct-form'>
-        <input 
-          type='text'
-          className='user-name'
-          onChange={(event)=> this.setState({name: event.target.value})}
-        />
+      <form className='login-form'>
         <input
           type='text' 
           className='user-email'
@@ -35,8 +29,8 @@ class CreateAccountForm extends Component{
         />
         <button onClick={(e)=> {
           e.preventDefault();
-          this.props.handleNewAccount(this.state)}}>
-          Create Account
+          this.props.handleLogin(this.state)}}>
+          LOGIN
         </button>
       </form>
     );
@@ -48,8 +42,7 @@ class CreateAccountForm extends Component{
 // });
 
 const mapDispatchToProps = dispatch => ({
-  handleNewAccount: userObj => dispatch(createNewUser(userObj))
+  handleLogin: userObj => dispatch(loginUser(userObj))
 });
 
 export default connect(null, mapDispatchToProps)(CreateAccountForm);
-

@@ -28,7 +28,7 @@ export const postNewAccount = async (userObj) => {
   return await newUserPost.json();
 }
 
-export const postUserSignIn = async (userObj) => {
+export const postUserLogin = async (userObj) => {
   const userSignIn = await fetch('/api/users', {
     method: 'POST',
     headers: {
