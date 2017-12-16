@@ -32,7 +32,7 @@ export const createNewUser = (userObj) => async (dispatch) => {
 
 export const newAccountError = () => ({
   type: 'ACCOUNT_ERROR',
-  errorStatus: 'An account already exists with that email'
+  errorMsg: 'An account already exists with that email'
 });
 
 

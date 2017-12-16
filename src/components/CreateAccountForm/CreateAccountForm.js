@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewUser } from '../../actions';
+import { browserHistory } from 'react-router-dom';
 
 class CreateAccountForm extends Component{
   constructor() {
@@ -34,6 +35,7 @@ class CreateAccountForm extends Component{
         <button onClick={(event)=> {
           event.preventDefault();
           this.props.handleNewAccount(this.state);
+          // this.props.history.push('/');
         }}>
           Create Account
         </button>
