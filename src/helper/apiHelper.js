@@ -22,8 +22,8 @@ export const postNewAccount = async (userObj) => {
     body: JSON.stringify(userObj)
   });
 
-  if(newUserPost.status > 400) {
-    console.log('bad status')
+  if (newUserPost.status > 400) {
+    console.log('bad status');
   }
   return await newUserPost.json();
 }
@@ -37,12 +37,12 @@ export const postUserLogin = async (userObj) => {
     body: JSON.stringify(userObj)
   });
 
-  if(userSignIn.status > 400) {
-    console.log('bad status')
+  if (userSignIn.status > 400) {
+    console.log('bad status');
   }
 
   return await userSignIn.json();
-}
+};
 
 
 
