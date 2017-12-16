@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions';
+import { logInUser } from '../../actions';
 import { Link, browserHistory } from 'react-router-dom';
 
 
@@ -15,8 +15,13 @@ class Login extends Component{
   }
 
   render() {
+    console.log(this.props.errorStatus)
     return (
       <form className='login-form'>
+        {
+          this.props.isError &&
+          <p className='error-msg'>{this.props.errorMsg}</p>
+        }
         <input
           type='text' 
           className='user-email'
@@ -30,7 +35,7 @@ class Login extends Component{
         <button onClick={(event)=> {
           event.preventDefault();
           this.props.handleLogin(this.state);
-          this.props.history.push('/');
+          // this.props.history.push('/');
         }}>
           LOGIN
         </button>
@@ -39,12 +44,13 @@ class Login extends Component{
   }
 }
 
-// const mapStateToProps = state => ({
-//   username: state.username
-// });
-
-const mapDispatchToProps = dispatch => ({
-  handleLogin: userObj => dispatch(loginUser(userObj))
+const mapStateToProps = state => ({
+  isError: state.errorStatus.isError,
+  errorMsg: state.errorStatus.errorMsg
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+const mapDispatchToProps = dispatch => ({
+  handleLogin: userObj => dispatch(logInUser(userObj))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

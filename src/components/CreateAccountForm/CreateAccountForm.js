@@ -26,7 +26,7 @@ class CreateAccountForm extends Component{
       <form className='create-acct-form'>
         {
           this.props.isError &&
-        <p className='error-msg'>{this.props.errorMsg}</p>
+          <p className='error-msg'>{this.props.errorMsg}</p>
         }
         <input 
           type='text'

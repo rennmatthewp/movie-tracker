@@ -3,14 +3,12 @@ const userReducer = (state = {loggedIn: false}, action) => {
     case 'ACCOUNT_ERROR':
       return {...state};
     case 'CREATE_ACCOUNT': 
-      console.log(action)
       return state;
     case 'LOGIN':
-      console.log(action)
       return {...state, ...action.userObj, loggedIn: true};
+    case 'LOGIN_ERROR':
+      return {loggedIn: false}
     case 'LOGOUT':
-      console.log('LOGOUT')
-      console.log(state)
       return {loggedIn: false};
     default: 
       return state;

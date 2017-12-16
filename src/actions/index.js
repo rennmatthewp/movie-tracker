@@ -29,8 +29,7 @@ export const createNewUser = (userObj) => async (dispatch) => {
     dispatch(newAccountError());
   } else {
     dispatch(createAccount(userData.id));
-    console.log(userObj)
-    dispatch(loginUser({email: userObj.email, password: userObj.password}));
+    dispatch(logInUser({email: userObj.email, password: userObj.password}));
   }
 };
 
@@ -48,11 +47,20 @@ export const logIn = (userObj) => ({
   userObj
 });
 
-export const loginUser = (userObj) => async (dispatch) => {
+export const logInUser = (userObj) => async (dispatch) => {
   const userData = await helper.postUserLogin(userObj);
-  console.log(userData)
-  dispatch(logIn(userData.data));
+  if (userData === null) {
+    dispatch(logInError())
+    console.log('error')
+  } else {
+    dispatch(logIn(userData.data));
+  }
 };
+
+export const logInError = () => ({
+  type: 'LOGIN_ERROR',
+  errorMsg: 'Email and/or password do not match an existing account'
+})
 
 
 export const logOut = () => ({

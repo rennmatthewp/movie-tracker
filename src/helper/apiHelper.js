@@ -42,6 +42,7 @@ export const postUserLogin = async (userObj) => {
 
   if(userLogIn.status >= 400) {
     console.log('logn error', userLogIn)
+    return null;
   }
 
   return await userLogIn.json();

@@ -17,7 +17,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.props.username)
     const username = this.props.username.name ? this.props.username.name : 'Guest';
 
     const signOutBtn = 
