@@ -1,8 +1,17 @@
 import React from 'react';
 
 const Card = props => {
+  const movieObj = {
+    title: props.title,
+    posterPath: props.posterPath,
+    id: props.id,
+    releaseDate: props.releaseDate,
+    voteAvg: props.voteAvg,
+    overview:props.overview
+  }
+
   return (
-    <div className="Card">
+    <div className="Card" onClick={()=> props.handleFav(1, movieObj)} >
       <img
         src={`https://image.tmdb.org/t/p/w500${props.posterPath}`}
         alt={`Poster for ${props.title}`}
@@ -11,5 +20,7 @@ const Card = props => {
     </div>
   );
 };
+
+
 
 export default Card;
