@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logOut } from '../../actions'
+import { logOut } from '../../actions';
 
 
 
@@ -9,9 +9,10 @@ const Header = props => {
   const username = props.username.data ? props.username.data.name : 'Guest';
 
   const signOutBtn = 
-    <button onClick={(e)=> {
-      e.preventDefault();
-      props.handleLogOut(this.state)}}>
+    <button onClick={(event)=> {
+      event.preventDefault();
+      props.handleLogOut(this.state);
+    }}>
       LogOut
     </button>;
 
@@ -44,7 +45,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleLogOut: () => dispatch(logOut())
-})
+});
 
 
 
