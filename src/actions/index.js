@@ -25,9 +25,12 @@ export const createAccount = (userObj) => ({
 
 export const createNewUser = (userObj) => async (dispatch) => {
   const userData = await helper.postNewAccount(userObj);
-  userData !== null 
-    ? dispatch(createAccount(userData)) 
-    : dispatch(newAccountError());
+  if (userData === null) {
+    dispatch(newAccountError());
+  } else {
+    dispatch(createAccount(userData));
+    dispatch(loginUser({email: userObj.email, password: userObj.password}));
+  }
 };
 
 export const newAccountError = () => ({
