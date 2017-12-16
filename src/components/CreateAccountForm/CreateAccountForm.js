@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewUser } from '../../actions';
 
@@ -31,9 +31,10 @@ class CreateAccountForm extends Component{
           className='user-password' 
           onChange={(event)=> this.setState({password: event.target.value})}
         />
-        <button onClick={(e)=> {
-          e.preventDefault();
-          this.props.handleNewAccount(this.state)}}>
+        <button onClick={(event)=> {
+          event.preventDefault();
+          this.props.handleNewAccount(this.state);
+        }}>
           Create Account
         </button>
       </form>

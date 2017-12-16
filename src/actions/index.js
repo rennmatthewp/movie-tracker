@@ -10,7 +10,7 @@ export const storeMovies = () => async (dispatch) => {
   try {
     const moviesArray = await helper.apiFetch(); 
     dispatch(fetchMovies(moviesArray));
-  } catch(error) {
+  } catch (error) {
     console.log(error);
   }
 };

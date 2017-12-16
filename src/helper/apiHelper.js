@@ -39,12 +39,13 @@ export const postUserLogin = async (userObj) => {
     body: JSON.stringify(userObj)
   });
 
+
   if(userLogIn.status > 400) {
     console.log('logn error', userLogIn)
   }
 
   return await userLogIn.json();
-}
+};
 
 
 
