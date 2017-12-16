@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions';
 import { Link, browserHistory } from 'react-router-dom';
@@ -27,10 +27,11 @@ class Login extends Component{
           className='user-password' 
           onChange={(event)=> this.setState({password: event.target.value})}
         />
-        <button onClick={(e)=> {
-          e.preventDefault();
+        <button onClick={(event)=> {
+          event.preventDefault();
           this.props.handleLogin(this.state);
-          this.props.history.push('/')}}>
+          this.props.history.push('/');
+        }}>
           LOGIN
         </button>
       </form>

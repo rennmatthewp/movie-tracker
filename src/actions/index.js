@@ -10,7 +10,7 @@ export const storeMovies = () => async (dispatch) => {
   try {
     const moviesArray = await helper.apiFetch(); 
     dispatch(fetchMovies(moviesArray));
-  } catch(error) {
+  } catch (error) {
     console.log(error);
   }
 };
@@ -40,10 +40,10 @@ export const logIn = (userObj) => ({
 export const loginUser = (userObj) => async (dispatch) => {
   const userData = await helper.postUserLogin(userObj);
   dispatch(logIn(userData));
-}
+};
 
 
 export const logOut = () => ({
   type: 'LOGOUT'
-})
+});
 
