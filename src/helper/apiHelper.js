@@ -28,7 +28,7 @@ export const postNewAccount = async (userObj) => {
   }
 
   return await newUserPost.json();
-}
+};
 
 export const postUserLogin = async (userObj) => {
   const userLogIn = await fetch('/api/users', {
@@ -47,6 +47,18 @@ export const postUserLogin = async (userObj) => {
 
   return await userLogIn.json();
 };
+
+
+export const postFav = async (userId, movieObj) => {
+  const favData = await fetch('/users/favorites/new', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userId, movieObj)
+  });
+  console.log(favData)
+}
 
 
 

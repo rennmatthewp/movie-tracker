@@ -67,3 +67,15 @@ export const logOut = () => ({
   type: 'LOGOUT'
 });
 
+
+
+export const addFavorite = (userId, movieObj) => ({
+  type: 'ADD_FAV',
+  userId,
+  movieObj
+})
+
+export const postAddFavorite = (userId, movieObj) => async (dispatch) => {
+  const favData = await helper.postFav(userId, movieObj);
+  dispatch(addFavorite(userId, movieObj))
+}
