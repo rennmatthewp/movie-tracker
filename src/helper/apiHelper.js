@@ -9,7 +9,7 @@ export const apiFetch = async () => {
     const movieArray = parsedData.results;
     return movieArray;
   } catch (error) {
-    console.log(error);
+    console.log('movies fetch', error);
   }
 };
 
@@ -22,14 +22,16 @@ export const postNewAccount = async (userObj) => {
     body: JSON.stringify(userObj)
   });
 
-  if (newUserPost.status > 400) {
-    console.log('bad status');
+  if(newUserPost.status >= 400) {
+    console.log('new account bad status')
+    return null;
   }
+
   return await newUserPost.json();
 }
 
 export const postUserLogin = async (userObj) => {
-  const userSignIn = await fetch('/api/users', {
+  const userLogIn = await fetch('/api/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -37,11 +39,13 @@ export const postUserLogin = async (userObj) => {
     body: JSON.stringify(userObj)
   });
 
-  if (userSignIn.status > 400) {
-    console.log('bad status');
+
+  if(userLogIn.status >= 400) {
+    console.log('logn error', userLogIn)
+    return null;
   }
 
-  return await userSignIn.json();
+  return await userLogIn.json();
 };
 
 

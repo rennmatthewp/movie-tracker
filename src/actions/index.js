@@ -18,15 +18,25 @@ export const storeMovies = () => async (dispatch) => {
 
 
 
-export const createAccount = (userObj) => ({
+export const createAccount = (id) => ({
   type: 'CREATE_ACCOUNT',
-  userObj
+  id
 });
 
 export const createNewUser = (userObj) => async (dispatch) => {
   const userData = await helper.postNewAccount(userObj);
-  dispatch(createAccount(userData));
+  if (userData === null) {
+    dispatch(newAccountError());
+  } else {
+    dispatch(createAccount(userData.id));
+    dispatch(logInUser({email: userObj.email, password: userObj.password}));
+  }
 };
+
+export const newAccountError = () => ({
+  type: 'ACCOUNT_ERROR',
+  errorMsg: 'An account already exists with that email'
+});
 
 
 
@@ -37,10 +47,20 @@ export const logIn = (userObj) => ({
   userObj
 });
 
-export const loginUser = (userObj) => async (dispatch) => {
+export const logInUser = (userObj) => async (dispatch) => {
   const userData = await helper.postUserLogin(userObj);
-  dispatch(logIn(userData));
+  if (userData === null) {
+    dispatch(logInError())
+    console.log('error')
+  } else {
+    dispatch(logIn(userData.data));
+  }
 };
+
+export const logInError = () => ({
+  type: 'LOGIN_ERROR',
+  errorMsg: 'Email and/or password do not match an existing account'
+})
 
 
 export const logOut = () => ({
