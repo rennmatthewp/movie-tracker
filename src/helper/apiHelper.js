@@ -23,6 +23,7 @@ export const postNewAccount = async (userObj) => {
   });
 
   if(newUserPost.status > 400) {
+    console.log('new account bad status')
     return null;
   }
 

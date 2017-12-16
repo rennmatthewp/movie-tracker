@@ -33,7 +33,7 @@ export const createNewUser = (userObj) => async (dispatch) => {
 export const newAccountError = () => ({
   type: 'ACCOUNT_ERROR',
   errorStatus: 'An account already exists with that email'
-})
+});
 
 
 
@@ -47,10 +47,10 @@ export const logIn = (userObj) => ({
 export const loginUser = (userObj) => async (dispatch) => {
   const userData = await helper.postUserLogin(userObj);
   dispatch(logIn(userData));
-}
+};
 
 
 export const logOut = () => ({
   type: 'LOGOUT'
-})
+});
 
