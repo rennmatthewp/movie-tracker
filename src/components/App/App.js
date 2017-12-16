@@ -32,9 +32,10 @@ class App extends Component {
       </div>
     );
   }
-}
+};
 
 const mapStateToProps = state => ({ movies: state.movies });
+
 const mapDispatchToProps = dispatch => ({
   handleFetch: () => dispatch(storeMovies())
 });

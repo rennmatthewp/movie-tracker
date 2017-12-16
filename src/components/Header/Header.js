@@ -44,11 +44,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleLogOut: () => dispatch(logOut())
-})
-
-
-
-
-
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
