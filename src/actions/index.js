@@ -25,8 +25,17 @@ export const createAccount = (userObj) => ({
 
 export const createNewUser = (userObj) => async (dispatch) => {
   const userData = await helper.postNewAccount(userObj);
-  dispatch(createAccount(userData));
+  if(userData !== null) {
+    dispatch(createAccount(userData)) 
+  } else if(userData === null) {
+    dispatch(newAccountError());
+  }
 };
+
+export const newAccountError = () => ({
+  type: 'ACCOUNT_ERROR',
+  errorStatus: 'An account already exists with that email'
+})
 
 
 
