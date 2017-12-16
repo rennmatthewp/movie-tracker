@@ -18,9 +18,9 @@ export const storeMovies = () => async (dispatch) => {
 
 
 
-export const createAccount = (userObj) => ({
+export const createAccount = (id) => ({
   type: 'CREATE_ACCOUNT',
-  userObj
+  id
 });
 
 export const createNewUser = (userObj) => async (dispatch) => {
@@ -28,7 +28,8 @@ export const createNewUser = (userObj) => async (dispatch) => {
   if (userData === null) {
     dispatch(newAccountError());
   } else {
-    dispatch(createAccount(userData));
+    dispatch(createAccount(userData.id));
+    console.log(userObj)
     dispatch(loginUser({email: userObj.email, password: userObj.password}));
   }
 };
@@ -49,7 +50,8 @@ export const logIn = (userObj) => ({
 
 export const loginUser = (userObj) => async (dispatch) => {
   const userData = await helper.postUserLogin(userObj);
-  dispatch(logIn(userData));
+  console.log(userData)
+  dispatch(logIn(userData.data));
 };
 
 

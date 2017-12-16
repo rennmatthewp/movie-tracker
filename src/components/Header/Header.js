@@ -17,7 +17,8 @@ class Header extends Component {
   }
 
   render() {
-    const username = this.props.username.data ? this.props.username.data.name : 'Guest';
+    console.log(this.props.username)
+    const username = this.props.username.name ? this.props.username.name : 'Guest';
 
     const signOutBtn = 
       <button onClick={(event)=> {
@@ -37,7 +38,7 @@ class Header extends Component {
         </Link>
       </div>;
     
-    const userButtons = this.props.username.data ? signOutBtn : newUserBtns;
+    const userButtons = this.props.username.name ? signOutBtn : newUserBtns;
 
     return (
       <div>
