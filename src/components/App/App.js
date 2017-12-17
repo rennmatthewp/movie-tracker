@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <div className="App">
         <Route path="/" component={Header} />
-        <Route exact path="/" component={CardContainer} />
+        <Route path="/" component={CardContainer} />
         <Route path="/createaccount" component={CreateAccountForm} />
         <Route path="/login" component={LoginForm} />
       </div>

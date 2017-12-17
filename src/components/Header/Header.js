@@ -12,14 +12,13 @@ class Header extends Component {
     // console.log(this.props.history)
     if (nextProps.loggedIn && !this.props.loggedIn) {
       this.props.history.push('/');
+
     }
   }
 
   handleFavoritesClick = () => {
-    console.log(this.props.loggedIn)
     //if a user is not signed in, prompt them to sign in/create account
 
-    //if they are signed in/ run get favorites action and bring them to the card container
     if (this.props.loggedIn){
       console.log('displayfavorites moo')
       this.props.displayFavorites(this.props.username.id)
@@ -58,7 +57,9 @@ class Header extends Component {
         </Link>
         <h3>Hello, {username}!</h3>
         {userButtons}
-        <button onClick={this.handleFavoritesClick}>Favorites</button>
+        <Link to= '/favorites'>
+          <button onClick={this.handleFavoritesClick}>Favorites</button>
+        </Link>
       </header>
     );
   }
