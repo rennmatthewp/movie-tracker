@@ -11,9 +11,8 @@ describe('moviesReducer', () => {
   it('should return new state with movie data added', () => {
     const movies = [{ title: 'Air Bud' }];
     const expected = [...movies];
+    const action = actions.fetchMovies(movies);
 
-    expect(moviesReducer(undefined, actions.fetchMovies(movies))).toEqual(
-      expected
-    );
+    expect(moviesReducer(undefined, action)).toEqual(expected);
   });
 });
