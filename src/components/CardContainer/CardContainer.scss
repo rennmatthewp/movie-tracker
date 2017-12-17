@@ -1,5 +1,10 @@
 .CardContainer {
+  background-image: url(../../assets/stage.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90vh;
   display: flex;
+  align-items: center;
   flex-wrap: nowrap;
   overflow-x: auto;
 }
