@@ -51,7 +51,6 @@ export const postUserLogin = async (userObj) => {
 
 export const postFav = async (userId, movieObj) => {
   const userIdObj= {user_id: userId};
-  console.log({...userIdObj, ...movieObj})
   const favData = await fetch(`/api/users/favorites/new`, {
     method: 'POST',
     headers: {
@@ -59,13 +58,23 @@ export const postFav = async (userId, movieObj) => {
     },
     body: JSON.stringify({...userIdObj, ...movieObj})
   });
-
-  console.log(favData);
   const jsonData = await favData.json();
-  console.log('got into post');
-  console.log(jsonData);
   return jsonData;
 };
+
+
+export const deleteFavorite = async (userId, movieId) => {
+  const payloadObj = {user_id: userId, movie_id: movieId}
+  const favData = await fetch (`/api/users/${userId}/favorites/${movieId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payloadObj)
+  });
+  return await favData.json();
+};
+
 
 
 

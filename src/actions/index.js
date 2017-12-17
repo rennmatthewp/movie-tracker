@@ -76,7 +76,7 @@ export const addFavorite = (userId, movieObj) => ({
 });
 
 export const postAddFavorite = (userId, movieObj) => async (dispatch) => {
-  const favData = await helper.postFav(userId, movieObj);
+  await helper.postFav(userId, movieObj);
   // console.log('insideReducer', favData);
   dispatch(addFavorite(userId, movieObj));
 };

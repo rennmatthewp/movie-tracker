@@ -4,8 +4,10 @@ const favoritesReducer = (state = [], action) => {
     console.log(action);
     return [...state, action.movieObj];
   case 'REMOVE_FAV':
-    console.log(action);
-    return state.filter(movie => movie.id !== action.movieId);
+    console.log(action.movieId);
+    return state.filter(movie => {
+      console.log(movie.movie_id)
+      return movie.movie_id !== action.movieId});
   default: 
     return state;
   }
