@@ -10,9 +10,6 @@ import LoginForm from '../LoginForm/LoginForm';
 import PropTypes from 'prop-types';
 
 class App extends Component {
-  constructor() {
-    super();
-  }
 
   async componentDidMount() {
     try {
@@ -47,5 +44,5 @@ export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
 
 App.propTypes = {
   handleFetch: PropTypes.func,
-  movies: PropTypes.object
+  movies: PropTypes.array
 };

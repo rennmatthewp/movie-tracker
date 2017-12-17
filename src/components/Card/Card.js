@@ -1,5 +1,4 @@
 import React from 'react';
-import { browserHistory } from 'react-router-dom';
 import './Card.css';
 import PropTypes from 'prop-types';
 
@@ -44,9 +43,9 @@ Card.propTypes = {
   title: PropTypes.string,
   posterPath: PropTypes.string,
   handleFav: PropTypes.func,
-  id: PropTypes.string,
+  id: PropTypes.number,
   releaseDate: PropTypes.string,
-  voteAvg: PropTypes.string,
+  voteAvg: PropTypes.number,
   overview: PropTypes.string,
-  history: PropTypes.string
+  history: PropTypes.object
 };
