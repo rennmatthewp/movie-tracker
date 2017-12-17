@@ -2,21 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Card from '../Card/Card';
 import { postAddFavorite } from '../../actions';
+import { Route } from 'react-router-dom';
 
 const CardContainer = props => {
   const mappedCards = props.movies.map((movie, index) => {
     return (
-      <Card
-        key={`movie-${index}`}
-        title={movie.title}
-        posterPath={movie.poster_path}
-        handleFav= {props.handleFav}
-        id={movie.id}
-        releaseDate={movie.release_date}
-        voteAvg={movie.vote_average}
-        overview={movie.overview}
-        user={props.user.id}
-
+      < Route path ='/' render={()=> 
+        <Card 
+          key={`movie-${index}`}
+          title={movie.title}
+          posterPath={movie.poster_path}
+          handleFav= {props.handleFav}
+          id={movie.id}
+          releaseDate={movie.release_date}
+          voteAvg={movie.vote_average}
+          overview={movie.overview}
+          user={props.user} 
+          history={props.history}/>}
       />
     );
   });

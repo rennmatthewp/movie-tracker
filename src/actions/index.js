@@ -60,7 +60,7 @@ export const logInUser = (userObj) => async (dispatch) => {
 export const logInError = () => ({
   type: 'LOGIN_ERROR',
   errorMsg: 'Email and/or password do not match an existing account'
-})
+});
 
 
 export const logOut = () => ({
@@ -77,5 +77,6 @@ export const addFavorite = (userId, movieObj) => ({
 
 export const postAddFavorite = (userId, movieObj) => async (dispatch) => {
   const favData = await helper.postFav(userId, movieObj);
+  console.log('insideReducer', favData)
   dispatch(addFavorite(userId, movieObj))
 }
