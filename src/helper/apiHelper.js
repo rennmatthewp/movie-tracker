@@ -22,8 +22,8 @@ export const postNewAccount = async (userObj) => {
     body: JSON.stringify(userObj)
   });
 
-  if(newUserPost.status >= 400) {
-    console.log('new account bad status')
+  if (newUserPost.status >= 400) {
+    console.log('new account bad status');
     return null;
   }
 
@@ -40,29 +40,32 @@ export const postUserLogin = async (userObj) => {
   });
 
 
-  if(userLogIn.status >= 400) {
-    console.log('logn error', userLogIn)
+  if (userLogIn.status >= 400) {
+    console.log('logn error', userLogIn);
     return null;
   }
-  console.log(userLogIn)
+  //console.log(userLogIn);
   return await userLogIn.json();
 };
 
 
 export const postFav = async (userId, movieObj) => {
-  const userIdObj= {user_id: userId}
-  const favData = await fetch(`/users/${userId}/favorites/new`, {
+  const userIdObj= {user_id: userId};
+  console.log({...userIdObj, ...movieObj})
+  const favData = await fetch(`/api/users/favorites/new`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({...userIdObj, ...movieObj})
   });
-  const jsonData = await favData.json()
-  console.log('got into post')
-  console.log(jsonData)
+
+  console.log(favData);
+  const jsonData = await favData.json();
+  console.log('got into post');
+  console.log(jsonData);
   return jsonData;
-}
+};
 
 
 

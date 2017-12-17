@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logInUser } from '../../actions';
-import { Link, browserHistory } from 'react-router-dom';
+import { browserHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 
 class Login extends Component{
@@ -15,7 +17,6 @@ class Login extends Component{
   }
 
   render() {
-    console.log(this.props.errorStatus)
     return (
       <form className='login-form'>
         {
@@ -54,3 +55,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+
+
+Login.propTypes = {
+  handleLogin: PropTypes.func,
+  isError: PropTypes.bool,
+  errorMsg: PropTypes.string
+};

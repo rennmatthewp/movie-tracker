@@ -6,7 +6,8 @@ describe('userReducer', () => {
   beforeEach(() => {
     expected = {loggedIn: false};
     
-  })
+  });
+
   it('should return the default state', () => {
 
     expect(userReducer(undefined, {})).toEqual(expected);
@@ -26,7 +27,7 @@ describe('userReducer', () => {
     };
     
     const action = actions.createAccount(userObj);
-    expect(userReducer(undefined, action)).toEqual(expected)
+    expect(userReducer(undefined, action)).toEqual(expected);
   });
 
   it('should return new state with new user data when a user logs in', () => {
@@ -39,10 +40,10 @@ describe('userReducer', () => {
     expected = {
       ...userObj,
       loggedIn: true
-    }
+    };
     
     const action = actions.logIn(userObj);
-    expect(userReducer(undefined, action)).toEqual(expected)
+    expect(userReducer(undefined, action)).toEqual(expected);
   });
 
   it('should return default state if there is a logIn error', () => {

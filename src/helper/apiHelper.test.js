@@ -29,7 +29,7 @@ describe('apiHelper', () => {
 
     const fetch = await apiFetch();
 
-    expect(fetch).toEqual()
+    expect(fetch).toEqual();
   });
 });
 
@@ -39,7 +39,7 @@ describe('postNewAccount', () => {
       Promise.resolve({
         json: () =>
           Promise.resolve({
-           username: 'Julie'
+            username: 'Julie'
           })
       })
     );
@@ -63,7 +63,7 @@ describe('postNewAccount', () => {
     const mockUserObj= { username: 'Julie' };
     const fetch = await postNewAccount(mockUserObj);
 
-    expect(fetch).toEqual(null)
+    expect(fetch).toEqual(null);
   });
 });
 
@@ -73,7 +73,7 @@ describe('postUserLogin', () => {
       Promise.resolve({
         json: () =>
           Promise.resolve({
-           username: 'Julie'
+            username: 'Julie'
           })
       })
     );
@@ -84,8 +84,8 @@ describe('postUserLogin', () => {
     const fetch = await postUserLogin(mockUserObj);
   
     expect(typeof fetch).toEqual('object');  
-    expect(fetch).toEqual(mockUserObj)
-  })
+    expect(fetch).toEqual(mockUserObj);
+  });
 
   it('should return and error if the fetch fails', async () => {
     window.fetch = jest.fn().mockImplementation(() =>
@@ -97,7 +97,7 @@ describe('postUserLogin', () => {
     const mockUserObj= { username: 'Julie' };
     const fetch = await postUserLogin(mockUserObj);
     
-    expect(fetch).toEqual(null)
+    expect(fetch).toEqual(null);
   });
 });
 
@@ -107,8 +107,8 @@ describe('postFav', () => {
       Promise.resolve({
         json: () =>
           Promise.resolve({
-           userId: 3,
-           title: 'Jaws 3'
+            userId: 3,
+            title: 'Jaws 3'
           })
       })
     );
@@ -116,8 +116,8 @@ describe('postFav', () => {
 
   it('should return', async () => {
     const mockData = {
-     userId: 3,
-     title: 'Jaws 3'
+      userId: 3,
+      title: 'Jaws 3'
     };
 
     const fetch = await postFav(mockData);
@@ -132,13 +132,13 @@ describe('postFav', () => {
     );
 
     const mockData = {
-     userId: 3,
-     title: 'Jaws 3'
+      userId: 3,
+      title: 'Jaws 3'
     };
     const fetch = await postFav(mockData);
     
-    expect(fetch).toEqual()
+    expect(fetch).toEqual();
   });
-})
+});
 
 

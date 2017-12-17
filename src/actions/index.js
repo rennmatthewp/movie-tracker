@@ -50,8 +50,8 @@ export const logIn = (userObj) => ({
 export const logInUser = (userObj) => async (dispatch) => {
   const userData = await helper.postUserLogin(userObj);
   if (userData === null) {
-    dispatch(logInError())
-    console.log('error')
+    dispatch(logInError());
+    console.log('error');
   } else {
     dispatch(logIn(userData.data));
   }
@@ -73,10 +73,10 @@ export const addFavorite = (userId, movieObj) => ({
   type: 'ADD_FAV',
   userId,
   movieObj
-})
+});
 
 export const postAddFavorite = (userId, movieObj) => async (dispatch) => {
   const favData = await helper.postFav(userId, movieObj);
-  console.log('insideReducer', favData)
-  dispatch(addFavorite(userId, movieObj))
-}
+  console.log('insideReducer', favData);
+  dispatch(addFavorite(userId, movieObj));
+};

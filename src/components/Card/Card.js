@@ -1,6 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router-dom';
 import './Card.css';
+import PropTypes from 'prop-types';
 
 const Card = props => {
   const movieObj = {
@@ -23,7 +24,6 @@ const Card = props => {
           }
         }}>Fave!
       </button>
-      
       <img
         src={`https://image.tmdb.org/t/p/w500${props.posterPath}`}
         alt={`Poster for ${props.title}`}
@@ -37,3 +37,16 @@ const Card = props => {
 };
 
 export default Card;
+
+
+Card.propTypes = {
+  user: PropTypes.object,
+  title: PropTypes.string,
+  posterPath: PropTypes.string,
+  handleFav: PropTypes.func,
+  id: PropTypes.string,
+  releaseDate: PropTypes.string,
+  voteAvg: PropTypes.string,
+  overview: PropTypes.string,
+  history: PropTypes.string
+};
