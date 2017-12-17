@@ -1,5 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router-dom';
+import './Card.css';
 
 const Card = props => {
   const movieObj = {
