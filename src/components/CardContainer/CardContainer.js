@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Card from '../Card/Card';
 import { postAddFavorite } from '../../actions';
 import { Route } from 'react-router-dom';
+import './CardContainer.css';
 
 const CardContainer = props => {
   const mappedCards = props.movies.map((movie, index) => {
