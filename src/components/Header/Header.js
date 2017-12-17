@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logOut } from '../../actions';
 import PropTypes from 'prop-types';
+import './Header.css';
 
 class Header extends Component {
 
@@ -38,13 +39,13 @@ class Header extends Component {
     const userButtons = this.props.username.name ? signOutBtn : newUserBtns;
 
     return (
-      <div>
+      <header className="header">
         <Link to='/' className='home-link'>
           <h1>MovieTracker</h1>
         </Link>
         <h3>Hello, {username}!</h3>
         {userButtons}
-      </div>
+      </header>
     );
   }
 }
