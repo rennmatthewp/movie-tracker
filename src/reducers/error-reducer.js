@@ -1,12 +1,12 @@
 const errorReducer = (state = {isError: false, errorMsg: ''}, action) => {
   switch (action.type) {
-    case 'ACCOUNT_ERROR':
+  case 'ACCOUNT_ERROR':
     // console.log(action)
-      return {...state, isError: true, errorMsg: action.errorMsg};
-    case 'LOGIN_ERROR':
-      return {...state, isError: true, errorMsg: action.errorMsg};
-    default: 
-      return state;
+    return {...state, isError: true, errorMsg: action.errorMsg};
+  case 'LOGIN_ERROR':
+    return {...state, isError: true, errorMsg: action.errorMsg};
+  default: 
+    return state;
   }
 };
 

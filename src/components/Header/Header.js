@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, browserHistory } from 'react-router-dom';
 import { logOut } from '../../actions';
-import { browserHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 
 
@@ -11,7 +12,7 @@ class Header extends Component {
   componentWillUpdate(nextProps) {
     // console.log(this.props)
     // console.log(this.props.history)
-     if(nextProps.loggedIn && !this.props.loggedIn) {
+    if (nextProps.loggedIn && !this.props.loggedIn) {
       this.props.history.push('/');
     }
   }
@@ -49,7 +50,7 @@ class Header extends Component {
       </div>
     );
   }
-};
+}
 
 const mapStateToProps = state => ({
   username: state.user,
@@ -63,3 +64,8 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 
+Header.propTypes = {
+  username: PropTypes.object,
+  loggedIn: PropTypes.bool,
+  handleLogOut: PropTypes.func
+};

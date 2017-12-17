@@ -1,5 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 const Card = props => {
   const movieObj = {
@@ -9,13 +11,13 @@ const Card = props => {
     release_date: props.releaseDate,
     vote_average: props.voteAvg,
     overview:props.overview
-  }
+  };
 
   return (
     <div 
       className="Card" 
       onClick={()=> {
-        if(!props.user.id){
+        if (!props.user.id){
           props.history.push('/login');
         } else {
           props.handleFav(props.user.id, movieObj);
@@ -34,3 +36,16 @@ const Card = props => {
 
 
 export default Card;
+
+
+Card.propTypes = {
+  user: PropTypes.object,
+  title: PropTypes.string,
+  posterPath: PropTypes.string,
+  handleFav: PropTypes.func,
+  id: PropTypes.string,
+  releaseDate: PropTypes.string,
+  voteAvg: PropTypes.string,
+  overview: PropTypes.string,
+  history: PropTypes.string
+};
