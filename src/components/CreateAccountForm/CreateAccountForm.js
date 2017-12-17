@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNewUser } from '../../actions';
-import { browserHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 class CreateAccountForm extends Component{
   constructor() {
@@ -17,7 +18,7 @@ class CreateAccountForm extends Component{
   handleClick = (event) => {
     event.preventDefault();
     this.props.handleNewAccount(this.state);
-    console.log(this.props.user)
+    console.log(this.props.user);
 
   }
 
@@ -63,3 +64,9 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateAccountForm);
 
+CreateAccountForm.propTypes = {
+  isError: PropTypes.bool,
+  errorMsg: PropTypes.string,
+  user: PropTypes.object,
+  handleNewAccount: PropTypes.func
+};

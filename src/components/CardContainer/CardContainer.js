@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Card from '../Card/Card';
 import { postAddFavorite } from '../../actions';
 import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 const CardContainer = props => {
   const mappedCards = props.movies.map((movie, index) => {
@@ -32,6 +34,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => ({
   handleFav: (userID, movieObj) => dispatch(postAddFavorite(userID, movieObj))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
+
+
+CardContainer.propTypes = {
+  movies: PropTypes.object
+};

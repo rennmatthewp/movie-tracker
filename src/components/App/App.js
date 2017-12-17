@@ -7,6 +7,7 @@ import CardContainer from '../CardContainer/CardContainer';
 import CreateAccountForm from '../CreateAccountForm/CreateAccountForm';
 import Header from '../Header/Header';
 import LoginForm from '../LoginForm/LoginForm';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor() {
@@ -32,7 +33,7 @@ class App extends Component {
       </div>
     );
   }
-};
+}
 
 const mapStateToProps = state => ({ movies: state.movies });
 
@@ -41,3 +42,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+
+
+
+App.propTypes = {
+  handleFetch: PropTypes.func,
+  movies: PropTypes.object
+};
