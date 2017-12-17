@@ -8,6 +8,9 @@ const favoritesReducer = (state = [], action) => {
     return state.filter(movie => {
       console.log(movie.movie_id)
       return movie.movie_id !== action.movieId});
+  case 'FETCH_FAVS':
+    console.log(action);
+    return [...state, ...action.moviesArray];
   default: 
     return state;
   }
