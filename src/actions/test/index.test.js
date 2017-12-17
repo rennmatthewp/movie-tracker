@@ -80,15 +80,15 @@ describe('All actions', () => {
     expect(actions.addFavorite(userId, movieObj)).toEqual(expected);
   });
 
-  it('runs the function postUserLogin when logInUser has been called', () => {
+  it.skip('runs the function postUserLogin when logInUser has been called', async () => {
     const userObj = { 
       username: 'Julie',
       email: 'jmdursema@gmail.com', 
       password: 'guest' };
     const postUserLogin= jest.fn();
-
-    actions.logInUser(userObj);
-
+    
+    await actions.logInUser(userObj);
+    
     expect(postUserLogin).toHaveBeenCalled();
   });
   

@@ -9,9 +9,11 @@ import PropTypes from 'prop-types';
 const CardContainer = props => {
   const mappedCards = props.movies.map((movie, index) => {
     return (
-      < Route path ='/' render={()=> 
+      < Route 
+        path ='/' 
+        key={`movie-${index}`}
+        render={()=> 
         <Card 
-          key={`movie-${index}`}
           title={movie.title}
           posterPath={movie.poster_path}
           handleFav= {props.handleFav}
@@ -40,5 +42,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
 
 
 CardContainer.propTypes = {
-  movies: PropTypes.object
+  movies: PropTypes.array
 };
