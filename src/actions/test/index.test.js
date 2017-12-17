@@ -36,4 +36,7 @@ describe('All actions', () => {
 
     expect(actions.logIn(userObj)).toEqual(expected);
   });
+
+  //mockpostUserLogIn= jest.fn()
+  //expect when loginUser is called expect mock postUserLogin to have been called. 
 });

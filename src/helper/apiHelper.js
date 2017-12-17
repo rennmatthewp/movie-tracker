@@ -44,20 +44,24 @@ export const postUserLogin = async (userObj) => {
     console.log('logn error', userLogIn)
     return null;
   }
-
+  console.log(userLogIn)
   return await userLogIn.json();
 };
 
 
 export const postFav = async (userId, movieObj) => {
-  const favData = await fetch('/users/favorites/new', {
+  const userIdObj= {user_id: userId}
+  const favData = await fetch(`/users/:${userId}/favorites/new`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(userId, movieObj)
+    body: JSON.stringify({...userIdObj, ...movieObj})
   });
-  console.log(favData)
+  const jsonData = await favData.json()
+  console.log('got into post')
+  console.log(jsonData)
+  return jsonData;
 }
 
 

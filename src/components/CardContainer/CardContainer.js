@@ -5,7 +5,6 @@ import { postAddFavorite } from '../../actions';
 import { Route } from 'react-router-dom';
 
 const CardContainer = props => {
-  console.log(props)
   const mappedCards = props.movies.map((movie, index) => {
     return (
       < Route path ='/' render={()=> 
