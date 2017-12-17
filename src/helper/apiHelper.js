@@ -51,7 +51,7 @@ export const postUserLogin = async (userObj) => {
 
 export const postFav = async (userId, movieObj) => {
   const userIdObj= {user_id: userId}
-  const favData = await fetch(`/users/:${userId}/favorites/new`, {
+  const favData = await fetch(`/users/${userId}/favorites/new`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
