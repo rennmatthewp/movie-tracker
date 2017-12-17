@@ -15,6 +15,7 @@ const CardContainer = props => {
         releaseDate={movie.release_date}
         voteAvg={movie.vote_average}
         overview={movie.overview}
+        user={props.user.id}
 
       />
     );
@@ -23,7 +24,9 @@ const CardContainer = props => {
   return <div className="CardContainer">{mappedCards}</div>;
 };
 
-const mapStateToProps = state => ({ movies: state.movies });
+const mapStateToProps = state => ({ 
+  movies: state.movies,
+  user: state.user});
 
 const mapDispatchToProps = (dispatch) => ({
   handleFav: (userID, movieObj) => dispatch(postAddFavorite(userID, movieObj))

@@ -11,7 +11,7 @@ const Card = props => {
   }
 
   return (
-    <div className="Card" onClick={()=> props.handleFav(1, movieObj)} >
+    <div className="Card" onClick={()=> props.handleFav(props.user, movieObj)} >
       <img
         src={`https://image.tmdb.org/t/p/w500${props.posterPath}`}
         alt={`Poster for ${props.title}`}
