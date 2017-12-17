@@ -18,6 +18,7 @@ const CardContainer = props => {
         <Card 
           title={movie.title}
           posterPath={movie.poster_path}
+          backdropPath={movie.backdrop_path}
           handleAddFav= {props.handleAddFav}
           handleRemoveFav= {props.handleRemoveFav}
           id={movie.id}
