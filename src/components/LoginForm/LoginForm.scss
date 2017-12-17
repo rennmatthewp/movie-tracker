@@ -1,0 +1,21 @@
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../../assets/stage.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90vh;
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    input {
+      margin: 5px;
+    }
+    button{
+      color: #fff;
+    }
+  }
+}
