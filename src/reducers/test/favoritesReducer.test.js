@@ -8,7 +8,7 @@ describe('favoritesReducer', () => {
     expect(favoritesReducer(undefined, {})).toEqual(expected);
   });
 
-  it('should return new state with movie data added', () => {
+  it('should return new state with movie data added to favorites', () => {
     const movie = { title: 'Air Bud' };
     const expected = [movie];
     const action = actions.addFavorite(1, movie);
