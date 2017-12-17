@@ -1,6 +1,8 @@
 import React from 'react';
+import { browserHistory } from 'react-router-dom';
 
 const Card = props => {
+  console.log(props)
   const movieObj = {
     title: props.title,
     posterPath: props.posterPath,
@@ -11,7 +13,14 @@ const Card = props => {
   }
 
   return (
-    <div className="Card" onClick={()=> props.handleFav(props.user, movieObj)} >
+    <div className="Card" onClick={()=> 
+    {if(!props.user.id){
+      console.log(props.user);
+      props.history.push('/login');
+    } else {
+      console.log('else')
+      props.handleFav(props.user, movieObj)}}}>
+      
       <img
         src={`https://image.tmdb.org/t/p/w500${props.posterPath}`}
         alt={`Poster for ${props.title}`}
