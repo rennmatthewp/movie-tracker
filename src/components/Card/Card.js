@@ -12,16 +12,24 @@ const Card = props => {
     overview: props.overview
   };
 
+  const handleCardClick = () => {
+
+    if (!props.user.id) {
+      props.history.push('/login');
+    } else if (props.user.id && !props.isFav) {
+      props.handleAddFav(props.user.id, movieObj);
+      console.log('handleAdd', props.isFav)
+    } else if (props.user.id && props.isFav){
+      props.handleRemoveFav(props.user.id, props.id);
+      console.log('handleRemoveFav', props.isFav)
+    }
+  };
+
   return (
     <div className="Card">
       <button
-        onClick={() => {
-          if (!props.user.id) {
-            props.history.push('/login');
-          } else {
-            props.handleFav(props.user.id, movieObj);
-          }
-        }}>Fave!
+        onClick={handleCardClick}>
+        Fav
       </button>
       <img
         src={`https://image.tmdb.org/t/p/w500${props.posterPath}`}
@@ -42,7 +50,8 @@ Card.propTypes = {
   user: PropTypes.object,
   title: PropTypes.string,
   posterPath: PropTypes.string,
-  handleFav: PropTypes.func,
+  handleAddFav: PropTypes.func,
+  handleRemoveFav: PropTypes.func,
   id: PropTypes.number,
   releaseDate: PropTypes.string,
   voteAvg: PropTypes.number,
