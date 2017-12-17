@@ -77,6 +77,19 @@ export const addFavorite = (userId, movieObj) => ({
 
 export const postAddFavorite = (userId, movieObj) => async (dispatch) => {
   const favData = await helper.postFav(userId, movieObj);
-  console.log('insideReducer', favData);
+  // console.log('insideReducer', favData);
   dispatch(addFavorite(userId, movieObj));
 };
+
+
+export const removeFavorite = (userId, movieId) => ({
+  type: 'REMOVE_FAV',
+  userId,
+  movieId
+});
+
+export const deleteUserFavorite = (userId, movieId) => async (dispatch) => {
+  const removedFavorite = await helper.deleteFavorite(userId, movieId);
+  console.log(removedFavorite)
+  dispatch(removeFavorite(userId, movieId))
+}

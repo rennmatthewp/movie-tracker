@@ -12,16 +12,19 @@ const Card = props => {
     overview: props.overview
   };
 
+  const handleCardClick = () => {
+    if (!props.user.id) {
+      props.history.push('/login');
+    } else {
+      props.handleFav(props.user.id, movieObj);
+    }
+  };
+
   return (
     <div className="Card">
       <button
-        onClick={() => {
-          if (!props.user.id) {
-            props.history.push('/login');
-          } else {
-            props.handleFav(props.user.id, movieObj);
-          }
-        }}>Fave!
+        onClick={handleCardClick}>
+        Fav
       </button>
       <img
         src={`https://image.tmdb.org/t/p/w500${props.posterPath}`}
