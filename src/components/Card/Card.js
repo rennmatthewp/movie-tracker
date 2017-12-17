@@ -27,18 +27,26 @@ const Card = props => {
 
   return (
     <div className="Card">
-      <button
-        onClick={handleCardClick}>
-        Fav
-      </button>
       <img
+        className="poster"
         src={`https://image.tmdb.org/t/p/w500${props.posterPath}`}
         alt={`Poster for ${props.title}`}
       />
-      <h3>{props.title}</h3>
-      <h4>Released: {props.releaseDate}</h4>
-      <h4>Rating: {props.voteAvg}</h4>
-      <h4>{props.overview}</h4>
+      <div className="overlay">
+        <img
+        className="backdrop"
+        src={`https://image.tmdb.org/t/p/w500${props.backdropPath}`}
+        alt={`Back drop for ${props.title}`}
+        />
+        <button
+          onClick={handleCardClick}>
+          Fav
+        </button>
+        <h3>{props.title}</h3>
+        <h4>Released: {props.releaseDate}</h4>
+        <h4>Rating: {props.voteAvg}</h4>
+        <h4>{props.overview}</h4>
+      </div>
     </div>
   );
 };
