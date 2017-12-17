@@ -19,6 +19,7 @@ const CardContainer = props => {
     return ( 
       <Card 
         key={`movie-${index}`}
+        backdropPath={movie.backdrop_path}
         title={movie.title}
         posterPath={movie.poster_path}
         handleAddFav= {props.handleAddFav}
