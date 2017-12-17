@@ -7,33 +7,39 @@ import './CardContainer.css';
 import PropTypes from 'prop-types';
 
 const CardContainer = props => {
-  const mappedCards = props.movies.map((movie, index) => {
-    const favMovie = props.favorites.find(favMovie => favMovie.title === movie.title)
-    const isFav = favMovie ? true : false    
-    return (
-      < Route 
-        path ='/' 
+  const arrayType = props.location.pathname === '/favorites' ? props.favorites : props.movies;
+  
+  const mappedCards = arrayType.map((movie, index) => {
+    const newMovieId = movie.movie_id ? movie.movie_id : movie.id;
+
+    const favMovie = props.favorites.find(favMovie => favMovie.title === movie.title);
+
+    const isFav = favMovie ? true : false;   
+
+    return ( 
+      <Card 
         key={`movie-${index}`}
-        render={()=> 
-        <Card 
-          title={movie.title}
-          posterPath={movie.poster_path}
-          backdropPath={movie.backdrop_path}
-          handleAddFav= {props.handleAddFav}
-          handleRemoveFav= {props.handleRemoveFav}
-          id={movie.id}
-          releaseDate={movie.release_date}
-          voteAvg={movie.vote_average}
-          overview={movie.overview}
-          user={props.user} 
-          history={props.history}
-          isFav= {isFav}
-          />}
-      />
+        backdropPath={movie.backdrop_path}
+        title={movie.title}
+        posterPath={movie.poster_path}
+        handleAddFav= {props.handleAddFav}
+        handleRemoveFav= {props.handleRemoveFav}
+        id={newMovieId}
+        releaseDate={movie.release_date}
+        voteAvg={movie.vote_average}
+        overview={movie.overview}
+        user={props.user} 
+        history={props.history}
+        isFav= {isFav}
+        />
     );
   });
 
-  return <div className="CardContainer">{mappedCards}</div>;
+  return (
+    <div className="CardContainer">
+      {mappedCards}
+    </div>
+  );
 };
 
 const mapStateToProps = state => ({ 

@@ -3,6 +3,8 @@ import './Card.css';
 import PropTypes from 'prop-types';
 
 const Card = props => {
+  // console.log(props)
+  
   const movieObj = {
     title: props.title,
     poster_path: props.posterPath,
@@ -20,7 +22,7 @@ const Card = props => {
       props.handleAddFav(props.user.id, movieObj);
       console.log('handleAdd', props.isFav)
     } else if (props.user.id && props.isFav){
-      props.handleRemoveFav(props.user.id, props.id);
+      props.handleRemoveFav(props.user.id, movieObj.movie_id);
       console.log('handleRemoveFav', props.isFav)
     }
   };
