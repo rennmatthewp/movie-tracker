@@ -75,6 +75,11 @@ export const deleteFavorite = async (userId, movieId) => {
   return await favData.json();
 };
 
+export const getUserFavs = async (userId) => {
+  const favArray = await fetch (`/api/users/${userId}/favorites`);
+  return await favArray.json()
+}
+
 
 
 

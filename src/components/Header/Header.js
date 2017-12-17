@@ -33,6 +33,9 @@ class Header extends Component {
         <Link to='/login' className='login'>
           Login
         </Link>
+        <Link to='/' className='favLink'>
+          Favorites
+        </Link>
       </div>;
     
     const userButtons = this.props.username.name ? signOutBtn : newUserBtns;

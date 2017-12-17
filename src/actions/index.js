@@ -92,4 +92,14 @@ export const deleteUserFavorite = (userId, movieId) => async (dispatch) => {
   const removedFavorite = await helper.deleteFavorite(userId, movieId);
   console.log(removedFavorite)
   dispatch(removeFavorite(userId, movieId))
+};
+
+export const fetchFavorites = (userId) => ({
+  type: 'FETCH_FAVS',
+  userId
+});
+
+export const getFavorites = (userId) => async (dispatch) => {
+  await helper.getUserFavs(userId);
+  dispatch(fetchFavorites(userId));
 }
