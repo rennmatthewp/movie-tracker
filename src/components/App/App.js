@@ -8,9 +8,9 @@ import CreateAccountForm from '../CreateAccountForm/CreateAccountForm';
 import Header from '../Header/Header';
 import LoginForm from '../LoginForm/LoginForm';
 import PropTypes from 'prop-types';
+import './App.css';
 
 class App extends Component {
-
   async componentDidMount() {
     try {
       this.props.handleFetch();
@@ -22,11 +22,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path ='/' component={ Header } />
+        <Route path="/" component={Header} />
         <Route exact path="/" component={CardContainer} />
         <Route path="/createaccount" component={CreateAccountForm} />
         <Route path="/login" component={LoginForm} />
-
       </div>
     );
   }
@@ -39,8 +38,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
-
-
 
 App.propTypes = {
   handleFetch: PropTypes.func,
