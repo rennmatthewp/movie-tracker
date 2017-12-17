@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logOut } from '../../actions';
+import { logOut, getFavorites } from '../../actions';
 import PropTypes from 'prop-types';
 import './Header.css';
 
@@ -14,6 +14,18 @@ class Header extends Component {
       this.props.history.push('/');
     }
   }
+
+  handleFavoritesClick = () => {
+    console.log(this.props.loggedIn)
+    //if a user is not signed in, prompt them to sign in/create account
+
+    //if they are signed in/ run get favorites action and bring them to the card container
+    if (this.props.loggedIn){
+      console.log('displayfavorites moo')
+      this.props.displayFavorites(this.props.username.id)
+    }
+  }
+
 
   render() {
     const username = this.props.username.name ? this.props.username.name : 'Guest';
@@ -34,9 +46,7 @@ class Header extends Component {
         <Link to='/login' className='login'>
           Login
         </Link>
-        <Link to='/' className='favLink'>
-          Favorites
-        </Link>
+        
       </div>;
     
     const userButtons = this.props.username.name ? signOutBtn : newUserBtns;
@@ -48,6 +58,7 @@ class Header extends Component {
         </Link>
         <h3>Hello, {username}!</h3>
         {userButtons}
+        <button onClick={this.handleFavoritesClick}>Favorites</button>
       </header>
     );
   }
@@ -59,7 +70,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleLogOut: () => dispatch(logOut())
+  handleLogOut: () => dispatch(logOut()),
+  displayFavorites: (userId) => dispatch(getFavorites(userId))
 });
 
 
