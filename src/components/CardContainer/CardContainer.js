@@ -17,6 +17,7 @@ const CardContainer = props => {
       favMovie.title === movie.title);
 
     const isFav = favMovie ? true : false;   
+    const voteAvg = parseInt(movie.vote_average, 10);
 
     return ( 
       <Card 
@@ -28,7 +29,7 @@ const CardContainer = props => {
         handleRemoveFav={props.handleRemoveFav}
         id={newMovieId}
         releaseDate={movie.release_date}
-        voteAvg={movie.vote_average}
+        voteAvg={voteAvg}
         overview={movie.overview}
         user={props.user} 
         history={props.history}
@@ -60,7 +61,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
 CardContainer.propTypes = {
   movies: PropTypes.array,
   location: PropTypes.object,
-  favorites: PropTypes.Array,
+  favorites: PropTypes.array,
   handleAddFav: PropTypes.func,
   handleRemoveFav: PropTypes.func,
   user: PropTypes.object,
