@@ -7,7 +7,6 @@ describe('All actions', () => {
       type: 'FETCH_MOVIES',
       moviesArray
     };
-
     expect(actions.fetchMovies(moviesArray)).toEqual(expected);
   });
 
@@ -33,7 +32,6 @@ describe('All actions', () => {
       type: 'LOGIN',
       userObj
     };
-
     expect(actions.logIn(userObj)).toEqual(expected);
   });
 
@@ -92,7 +90,7 @@ describe('All actions', () => {
   });
 
   it('has a type of FETCH_FAVS', () => {
-    const moviesArray =[{title: 'The Sandlot'}, {title: 'Zombieland'}]
+    const moviesArray =[{title: 'The Sandlot'}, {title: 'Zombieland'}];
     const expected = {
       type: 'FETCH_FAVS',
       moviesArray

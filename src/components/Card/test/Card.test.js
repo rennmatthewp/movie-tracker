@@ -23,11 +23,10 @@ describe ('Card', () => {
   it.skip('should call handleCardClick when the button is clicked', () => {
 
 
-  handleCardClick()
+  renderedCard.instance().props.handleCardClick()
 
   expect(handleAddFav).toHaveBeenCalled()
+
   });
-
-
 })
 
