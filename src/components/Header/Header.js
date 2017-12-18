@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { logOut, getFavorites } from '../../actions';
 import PropTypes from 'prop-types';
 import './Header.css';
@@ -52,9 +52,9 @@ class Header extends Component {
         </Link>
         <h3>Hello, {username}!</h3>
         {userButtons}
-        <Link to= '/favorites'>
+        <NavLink to= '/favorites' className='favBtn'>
           <button onClick={this.handleFavoritesClick}>Favorites</button>
-        </Link>
+        </NavLink>
       </header>
     );
   }
