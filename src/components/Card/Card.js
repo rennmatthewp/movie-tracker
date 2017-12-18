@@ -3,7 +3,8 @@ import './Card.css';
 import PropTypes from 'prop-types';
 
 const Card = props => {
-  // console.log(props)
+  
+  const buttonClass = !props.isFav ? 'card-fav' : 'card-fav selected'
   
   const movieObj = {
     title: props.title,
@@ -15,7 +16,6 @@ const Card = props => {
   };
 
   const handleCardClick = () => {
-
     if (!props.user.id) {
       props.history.push('/login');
     } else if (props.user.id && !props.isFav) {
@@ -41,7 +41,7 @@ const Card = props => {
         alt={`Back drop for ${props.title}`}
         />
         <button 
-          className='card-fav'
+          className={buttonClass}
           onClick={handleCardClick}>
         </button>
         <h3>{props.title}</h3>
