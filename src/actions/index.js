@@ -103,3 +103,4 @@ export const getFavorites = (userId) => async (dispatch) => {
   const responseArray = await helper.getUserFavs(userId);  
   dispatch(fetchFavorites(responseArray));
 };
+
