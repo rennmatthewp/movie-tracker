@@ -49,6 +49,7 @@ export const logIn = (userObj) => ({
 
 export const logInUser = (userObj) => async (dispatch) => {
   const userData = await helper.postUserLogin(userObj);
+
   if (userData === null) {
     dispatch(logInError());
     console.log('error');
@@ -76,8 +77,8 @@ export const addFavorite = (userId, movieObj) => ({
 });
 
 export const postAddFavorite = (userId, movieObj) => async (dispatch) => {
+  const favData = 
   await helper.postFav(userId, movieObj);
-  // console.log('insideReducer', favData);
   dispatch(addFavorite(userId, movieObj));
 };
 
@@ -90,7 +91,6 @@ export const removeFavorite = (userId, movieId) => ({
 
 export const deleteUserFavorite = (userId, movieId) => async (dispatch) => {
   const removedFavorite = await helper.deleteFavorite(userId, movieId);
-  console.log(removedFavorite)
   dispatch(removeFavorite(userId, movieId))
 };
 
@@ -100,6 +100,6 @@ export const fetchFavorites = (moviesArray) => ({
 });
 
 export const getFavorites = (userId) => async (dispatch) => {
-  const responseArray = await helper.getUserFavs(userId);
+  const responseArray = await helper.getUserFavs(userId);  
   dispatch(fetchFavorites(responseArray));
 };

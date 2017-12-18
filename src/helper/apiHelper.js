@@ -9,7 +9,7 @@ export const apiFetch = async () => {
     const movieArray = parsedData.results;
     return movieArray;
   } catch (error) {
-    console.log('movies fetch', error);
+    return null
   }
 };
 
@@ -23,7 +23,6 @@ export const postNewAccount = async (userObj) => {
   });
 
   if (newUserPost.status >= 400) {
-    console.log('new account bad status');
     return null;
   }
 
@@ -41,10 +40,9 @@ export const postUserLogin = async (userObj) => {
 
 
   if (userLogIn.status >= 400) {
-    console.log('logn error', userLogIn);
     return null;
   }
-  //console.log(userLogIn);
+
   return await userLogIn.json();
 };
 
@@ -58,13 +56,17 @@ export const postFav = async (userId, movieObj) => {
     },
     body: JSON.stringify({...userIdObj, ...movieObj})
   });
-  const jsonData = await favData.json();
-  return jsonData;
+
+  if (favData.status >= 400) {
+    return null;
+  }
+
+  return await favData.json();
 };
 
 
 export const deleteFavorite = async (userId, movieId) => {
-  const payloadObj = {user_id: userId, movie_id: movieId}
+  const payloadObj = {user_id: userId, movie_id: movieId};
   const favData = await fetch (`/api/users/${userId}/favorites/${movieId}`, {
     method: 'DELETE',
     headers: {
@@ -72,12 +74,23 @@ export const deleteFavorite = async (userId, movieId) => {
     },
     body: JSON.stringify(payloadObj)
   });
+
+  if (favData.status >= 400) {
+    return null;
+  }
+  
   return await favData.json();
 };
 
 export const getUserFavs = async (userId) => {
   const favArray = await fetch (`/api/users/${userId}/favorites`);
+
+  if (favArray.status >= 400) {
+    return null;
+  }
+
   const jsonFavArray = await favArray.json();
+
   return jsonFavArray.data
 };
 
