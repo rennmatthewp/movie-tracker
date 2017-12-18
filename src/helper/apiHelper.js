@@ -9,7 +9,7 @@ export const apiFetch = async () => {
     const movieArray = parsedData.results;
     return movieArray;
   } catch (error) {
-    return null
+    return null;
   }
 };
 
@@ -67,7 +67,7 @@ export const postFav = async (userId, movieObj) => {
 
 export const deleteFavorite = async (userId, movieId) => {
   const payloadObj = {user_id: userId, movie_id: movieId};
-  const favData = await fetch (`/api/users/${userId}/favorites/${movieId}`, {
+  const favData = await fetch(`/api/users/${userId}/favorites/${movieId}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ export const deleteFavorite = async (userId, movieId) => {
 };
 
 export const getUserFavs = async (userId) => {
-  const favArray = await fetch (`/api/users/${userId}/favorites`);
+  const favArray = await fetch(`/api/users/${userId}/favorites`);
 
   if (favArray.status >= 400) {
     return null;
@@ -91,7 +91,7 @@ export const getUserFavs = async (userId) => {
 
   const jsonFavArray = await favArray.json();
 
-  return jsonFavArray.data
+  return jsonFavArray.data;
 };
 
 

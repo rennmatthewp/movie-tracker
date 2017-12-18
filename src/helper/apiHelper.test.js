@@ -52,7 +52,7 @@ describe('postNewAccount', () => {
       id: 87,
       message: "New user created",
       status: "success"
-    }
+    };
     const fetch = await postNewAccount(mockUserObj);
 
     expect(typeof fetch).toEqual('object');
@@ -159,8 +159,8 @@ describe('deleteFavorite', () => {
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve({
-            status: "success", 
-            message: "1 row was deleted."
+          status: "success", 
+          message: "1 row was deleted."
         })
       })
     );
@@ -173,7 +173,7 @@ describe('deleteFavorite', () => {
     const expected = {
       status: "success", 
       message: "1 row was deleted."
-    }
+    };
 
     const fetch = await deleteFavorite(mockPayLoad);
     expect(fetch).toEqual(expected);
@@ -201,10 +201,10 @@ describe('getUserFavs', () => {
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve({
         json: () => Promise.resolve({
-            data: [{
-              userId: 3,
-              title: 'Jaws 3'
-            }]
+          data: [{
+            userId: 3,
+            title: 'Jaws 3'
+          }]
         })
       })
     );
