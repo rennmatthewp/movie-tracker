@@ -20,6 +20,10 @@ header {
   h1 {
     font-size: 46px;
   }
+  .favBtn.active{
+    background: #4A7AAF;
+    
+  }
   button{
     border: 1px solid white;
     transition: 0.8s;
