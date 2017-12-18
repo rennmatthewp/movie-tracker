@@ -15,4 +15,25 @@ describe('favoritesReducer', () => {
 
     expect(favoritesReducer(undefined, action)).toEqual(expected);
   });
+
+  it('should return new state with movie data removed from favorites', () => {
+    const expected = [];
+    const action = actions.removeFavorite(1, 432567);
+
+    expect(favoritesReducer(undefined, action)).toEqual(expected);
+  });
+
+  it('should return new state with a users favsArray added to favorites', () => {
+    const expected = [{title: 'Coco'}];
+    const action = actions.fetchFavorites([{title: 'Coco'}]);
+
+    expect(favoritesReducer(undefined, action)).toEqual(expected);
+  });
+
+  it('should return new state with cleared favorites when a user logs out', () => {
+    const expected = [];
+    const action = actions.logOut();
+
+    expect(favoritesReducer(undefined, action)).toEqual(expected);
+  });
 });
