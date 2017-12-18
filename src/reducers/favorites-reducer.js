@@ -6,7 +6,7 @@ const favoritesReducer = (state = [], action) => {
     return state.filter(movie => {
       return movie.movie_id !== action.movieId});
   case 'FETCH_FAVS':
-    return [ ...action.moviesArray];
+    return [...action.moviesArray];
   case 'LOGOUT':
     return [];
   default: 
