@@ -17,6 +17,10 @@ const Card = props => {
     release_date: props.releaseDate
   };
 
+  const backdrop = props.backdropPath 
+    ? `https://image.tmdb.org/t/p/w500${props.backdropPath}` 
+    : null;
+
   const handleCardClick = () => {
     if (!props.user.id) {
       props.history.push('/login');
@@ -26,6 +30,7 @@ const Card = props => {
       props.handleRemoveFav(props.user.id, movieObj.movie_id);
     }
   };
+  
 
   return (
     <div className="Card">
@@ -37,7 +42,7 @@ const Card = props => {
       <div className="overlay">
         <img
           className="backdrop"
-          src={`https://image.tmdb.org/t/p/w500${props.backdropPath}`}
+          src={backdrop}
           alt={`Back drop for ${props.title}`}
         />
         <button 
