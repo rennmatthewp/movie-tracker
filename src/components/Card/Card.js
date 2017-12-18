@@ -40,9 +40,9 @@ const Card = props => {
         src={`https://image.tmdb.org/t/p/w500${props.backdropPath}`}
         alt={`Back drop for ${props.title}`}
         />
-        <button
+        <button 
+          className='card-fav'
           onClick={handleCardClick}>
-          Fav
         </button>
         <h3>{props.title}</h3>
         <h4>Released: {props.releaseDate}</h4>
