@@ -20,10 +20,8 @@ const Card = props => {
       props.history.push('/login');
     } else if (props.user.id && !props.isFav) {
       props.handleAddFav(props.user.id, movieObj);
-      console.log('handleAdd', props.isFav)
     } else if (props.user.id && props.isFav){
       props.handleRemoveFav(props.user.id, movieObj.movie_id);
-      console.log('handleRemoveFav', props.isFav)
     }
   };
 

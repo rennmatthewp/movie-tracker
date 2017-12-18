@@ -2,29 +2,32 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Card from '../Card.js';
 
-it.skip('should render without crashing', () => {
-  const mockFunc = jest.fn();
-  const movie = {
-    backdrop_path: 'gkdsdkf.jpg',
-    title: 'The Sandlot',
-    posterPath: 'rhgjdkn.jpg',
-    release_date
-  };
-  const currentType = 'card';
-  const CardWrapper = shallow(<Card 
-    key={'movie-4'}
-    backdropPath={'ksdjfllg.jpg'}
-    title={'fkgdk.jps'}
-    posterPath={movie.poster_path}
-    handleAddFav= {jest.fn()}
-    handleRemoveFav= {jest.fn}
-    id={394249}
-    releaseDate={2017-12-08}
-    voteAvg={6.8}
-    overview={'What the fuck'}
-    user={} 
-    history={props.history}
-    isFav= {isFav}
+describe ('Card', () => {
+  let renderedCard;
+  let mockHandleAddFav;
+  let mockHandleRemoveFav;
 
-  expect(CardWrapper).toBeDefined();
-});
+  beforeEach(()=>{
+    mockHandleAddFav = jest.fn()
+    mockHandleRemoveFav = jest.fn()
+    renderedCard = shallow(<Card 
+      handleAddFav= {mockHandleAddFav} handleRemoveFav={mockHandleRemoveFav}
+      user={{id: 3}}
+      isFav= {false}/>) 
+  })
+  it('should match the snapshot', () => {
+  
+    expect(renderedCard).toMatchSnapshot()
+  })
+
+  it.skip('should call handleCardClick when the button is clicked', () => {
+
+
+  handleCardClick()
+
+  expect(handleAddFav).toHaveBeenCalled()
+  });
+
+
+})
+
