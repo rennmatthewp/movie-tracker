@@ -1,3 +1,6 @@
+/*eslint-disable max-len*/
+/*eslint-disable camelcase*/
+
 import { apiKey } from './.apiKey';
 
 export const apiFetch = async () => {
@@ -37,7 +40,6 @@ export const postUserLogin = async (userObj) => {
     },
     body: JSON.stringify(userObj)
   });
-
 
   if (userLogIn.status >= 400) {
     return null;
@@ -93,11 +95,3 @@ export const getUserFavs = async (userId) => {
 
   return jsonFavArray.data;
 };
-
-
-
-
-
-
-
-

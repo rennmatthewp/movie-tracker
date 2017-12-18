@@ -1,3 +1,6 @@
+/*eslint-disable camelcase*/
+/*eslint-disable id-blacklist*/
+
 import { 
   apiFetch, 
   postNewAccount, 
