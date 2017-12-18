@@ -23,14 +23,14 @@ describe('favoritesReducer', () => {
     expect(favoritesReducer(undefined, action)).toEqual(expected);
   });
 
-  it('should return new state with a users favsArray added to favorites', () => {
+  it('should return new state with a users favs added to favorites', () => {
     const expected = [{title: 'Coco'}];
     const action = actions.fetchFavorites([{title: 'Coco'}]);
 
     expect(favoritesReducer(undefined, action)).toEqual(expected);
   });
 
-  it('should return new state with cleared favorites when a user logs out', () => {
+  it('should return new state and clear favs when a user logs out', () => {
     const expected = [];
     const action = actions.logOut();
 
